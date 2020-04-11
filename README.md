@@ -17,4 +17,14 @@
         type = "string"
         default = "<YOUR_PROJECT_NAME>"
     }
+    
+    variable "region" {
+        type = "string"
+        default = "<YOUR_REGION>"
+    }
+    
+    variable "zone" {
+        type = "string"
+        default = "<YOUR_ZONE>"
+    }
     ```
