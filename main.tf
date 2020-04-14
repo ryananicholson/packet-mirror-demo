@@ -216,7 +216,7 @@ resource "google_compute_security_policy" "zeek-policy" {
   }
 
   rule {
-    action   = "allow"
+    action   = "deny(403)"
     priority = "2147483647"
     match {
       versioned_expr = "SRC_IPS_V1"
