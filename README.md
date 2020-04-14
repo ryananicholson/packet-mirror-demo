@@ -14,17 +14,58 @@
 - `variables.tf` file located in this root directory with the following contents:
     ```
     variable "project" {
-        type = "string"
+        type = string
         default = "<YOUR_PROJECT_NAME>"
     }
     
     variable "region" {
-        type = "string"
+        type = string
         default = "<YOUR_REGION>"
     }
     
     variable "zone" {
-        type = "string"
+        type = string
         default = "<YOUR_ZONE>"
     }
+
+    variable "url" {
+        type = string
+        default = "<YOUR_WEBSERVER_HOST>"
+    }
+
+    variable "key" {
+    type = string
+    default = "<YOUR_PRIVATE_KEY>"
+}
+
+    variable "cert" {
+        type = string
+        default = "<YOUR_CERTIFICATE_CHAIN>"
+    }
     ```
+- Domain you control (including DNS)
+    - You will populate an A record for your webserver host
+    - Terraform will output the appropriate URL for the HTTPS load balancer
+    - HTTPS will not function until this record is added
+
+## Terraform
+
+### Apply
+
+Once the above requirements are met, it's rather simple to spin up this environment:
+
+```
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+This spins up 18 resources in GCP and will take some time to build and install Zeek (\~1hr on an n1-standard-2 instance).
+
+### Destroy
+
+To destroy everything that Terraform previously built, simply run the command below:
+
+```
+terraform destroy -auto-approve
+```
