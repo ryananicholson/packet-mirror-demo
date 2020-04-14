@@ -1,1 +1,7 @@
 *.json
+terraform.*
+variables.tf
+*.pem
+.terraform
+.terraform/**
+tf.txt
